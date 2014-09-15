@@ -1,3 +1,27 @@
 // Place all the styles related to the movie controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.short-movie {
+  color: green;
+}
+
+.med-movie {
+  color: orange;
+}
+
+.long-movie {
+  color: red;
+}
+
+.stars {
+  background: url('http://ia.media-imdb.com/images/G/01/imdb/images/rating/rating-list/sprite-1445387679._V_.png') repeat-x;
+  background-position: 0px -40px;
+  display: inline-block;
+  height: 13px;
+  width: 140px;
+}
+
+.selected {
+  font-weight: bold;
+}

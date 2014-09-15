@@ -1,2 +1,7 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<%= render partial: 'home/shared/top' %>
+
+<h2><%= @user.name %></h2>
+
+<p>Position: <%= @user.description %></p>
+
+<p>Location: <%= @user.location %>  </p>

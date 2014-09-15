@@ -1,2 +1,17 @@
-<h1>Movie#show</h1>
-<p>Find me in app/views/movie/show.html.erb</p>
+<%= render partial: 'home/shared/top' %>
+
+<div ng-controller="MoviesCtrl">
+
+  <h2><%= @movie.title %></h2>
+
+        <img height=100 src="<%= @movie.poster_url %>">
+
+  <p><%= @movie.description %></p>
+
+  <p><%= @movie.length %> minutes </p>
+
+  <p><%= @movie.rating %> Average Rating</p>
+
+  <p><%= @movie.fav_count %> # of people who have fav'ed</p>
+
+</div>

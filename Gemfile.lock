@@ -39,6 +39,8 @@ GEM
     coffee-script-source (1.8.0)
     erubis (2.7.0)
     execjs (2.2.1)
+    faker (1.4.3)
+      i18n (~> 0.5)
     hike (1.2.3)
     i18n (0.6.11)
     journey (1.0.4)
@@ -103,6 +105,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  faker
   jquery-rails
   pg
   rails (= 3.2.18)

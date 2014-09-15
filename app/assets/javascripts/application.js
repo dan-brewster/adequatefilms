@@ -10,6 +10,21 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+
+//= require underscore
+
+// Add the following two lines
+//= require angular
+//= require angular-resource
+
+//= require main
+
+//=  require_self
+//  require_tree ./services/global
+//  require_tree ./services/main
+//  require_tree ./filters/global
+//  require_tree ./filters/main
+//= require_tree ./angular/controllers
+//  require_tree ./controllers/main
+//  require_tree ./directives/global
+//  require_tree ./directives/main

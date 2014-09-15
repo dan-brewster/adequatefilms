@@ -1,0 +1,10 @@
+<%= render partial: 'home/shared/top' %>
+hello
+<div ng-controller="HomeCtrl">
+  <ul>
+    <li ng-repeat="update in updates">
+      <b>{{update.user_movie.movie.id}} | {{update.user_movie.user.id}}</b><br>
+      <img ng-show="{{update.user_movie.movie.poster_url}}" height=100 ng-src="{{update.user_movie.movie.poster_url}}"><br ng-show="{{update.user_movie.movie.poster_url}}">{{update.user_movie.user.name}}<br>{{update.user_movie.movie.title}}<br><br>
+    </li>
+  </ul>
+</div>

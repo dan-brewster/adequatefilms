@@ -1,11 +1,26 @@
 AdequateFilms::Application.routes.draw do
+
+  root to: 'home#index'
+
+  get "home/recent_updates"
+
+  get "movie/index" => 'movie#index'
+  get "movie/list"
+
   get "role/show"
 
   get "person/show"
 
-  get "user/show"
+  get "user/movies" => 'user#movies'
 
-  get "movie/show"
+  get "user/:id" => 'user#show'
+
+  get "movie/:id" => 'movie#show'
+
+  get "user_movie" => 'user_movie#list'
+  #post "user_movie/create" => 'user_movie#create'
+
+  resources :user_movie, except: [:index], defaults: {format: :json}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,39 @@
+<%= render partial: 'home/shared/top' %>
+
+<div ng-controller="MoviesCtrl">
+
+  <h3>My Movies {{getCurrentYear()}} {{getCurrentLength()}}</h3>
+  <div class='col2'>
+    <b>Publication Date:</b>
+    <ul>
+      <li ng-repeat="pub_date in usermovies | orderBy:'-movie.pub_date' | nestedUnique:'movie':'pub_date' | trunc:4 track by $index">
+        <a href='' ng-class='boldStyle(pub_date, "year")' ng-click='setCurrentYear(pub_date)'>{{pub_date}}</a>
+        <span class='barChart' ng-style='makeBarChart(pub_date, "year")'></span>
+      </li>
+    </ul>
+    <b>Length:</b>
+    <ul>
+      <li ng-repeat="length in usermovies | orderBy:'movie.length' | nestedUnique:'movie':'length' track by $index">
+        <a href='' ng-class='boldStyle(length, "length")' ng-click='setCurrentLength(length)'>{{length}}</a>
+        <span class='barChart' ng-style='makeBarChart(length, "length")'></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="colAll">
+    <div ng-repeat="movie in usermovies | filter:yearFilterFn | filter:lengthFilterFn | orderBy:'created_at':true" class='card'>
+      <a class='x' href='' ng-click='deleteUserMovie(movie.id)'>X</a>
+      <h3><a href='{{movie.movie.id}}'>{{movie.movie.title}}</a></h3>
+      <div class='nopadding' ng-if='movie.movie.poster_url'>
+        <img height=100 ng-src='{{movie.movie.poster_url}}'><br>
+      </div>
+
+      <!-- WANT TO ABSTRACT THIS OUT -->
+      <i ng-class='lengthStyle(movie.movie.length)'>{{movie.movie.length}} minutes</i><br>
+      Avg Rating: <span title="{{movie.movie.rating}} stars" class='stars' ng-style='starWidth(movie.movie.rating)'></span><br>
+      {{movie.movie.fav_count}} favorites<br>
+      My Rating: <span title="{{movie.rating}} stars" class='stars' ng-style='starWidth(movie.rating)'></span><br>
+      <i>Added {{movie.created_at}}</i>
+    </div>
+  </div>
+</div>

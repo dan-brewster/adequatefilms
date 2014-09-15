@@ -1,0 +1,10 @@
+<% # expected: @movie %>
+
+<h3><%= movie.title %></h3>
+<i><%= movie.length %> minutes</i><br>
+<%= movie.rating %> rating<br>
+<%= movie.fav_count %> # favorites
+
+<% if movie.fav_count < 1000 && admin_mode %>
+  <a href='' ng-click="deleteMovie($index)">Delete</a>
+<% end %>

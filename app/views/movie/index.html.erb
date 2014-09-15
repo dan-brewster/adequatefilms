@@ -1,0 +1,54 @@
+<%= render partial: 'home/shared/top' %>
+
+
+<div ng-controller="MoviesCtrl">
+  <div class='col2'>
+    <b>Publication Date:</b>
+    <ul>
+      <li ng-repeat="pub_date in movies | filter:displayMovie | unique:'pub_date' | trunc:4 track by $index">
+        {{pub_date}}
+      </li>
+    </ul>
+    <b>Length:</b>
+    <ul>
+      <li ng-repeat="length in movies | filter:displayMovie | unique:'length' track by $index">
+        {{length}}
+      </li>
+    </ul>
+  </div>
+
+  <div class='col1'>
+
+    <a href='#' ng-click='refreshMovies()'>See 10 more movies!</a>
+    <a href='#' ng-click='hideWhatIveSeen(movies, user.id)'>{{isHiding ? 'Show' : 'Hide'}} ones I've seen</a>
+
+    <ul>
+      <li ng-repeat="movie in movies | filter:displayMovie">
+
+        <h3><a ng-mouseover="seeMovieDetails({movie:movie})" href='{{movie.id}}'>{{movie.title}}</a></h3>
+        <div class='nopadding' ng-if='movie.poster_url'>
+          <img height=100 ng-src='{{movie.poster_url}}'><br>
+        </div>
+
+        <!-- WANT TO ABSTRACT THIS OUT -->
+        <i ng-class='lengthStyle(movie.length)'>{{movie.length}} minutes</i><br>
+        Avg Rating: <span title="{{movie.rating}} stars" class='stars' ng-style='starWidth(movie.rating)'></span><br>
+        {{movie.fav_count}} favorites
+
+        <div ng-if="movie.fav_count < 1000">
+          <a href='' ng-click="deleteMovie($index)">Delete</a>
+        </div>
+
+        <div class='nopadding' ng-show='displayMovieBox(movie)'>
+          <input type="hidden" ng-model="movie" value="{{movie.id}}">
+          <input type="hidden" ng-model="user" value="{{user.id}}">
+          <input type="submit" ng-click="addUserMovie({movie:movie, user:user})" value="Want To Watch!">
+        </div>
+        <div class='nopadding' ng-hide='displayMovieBox(movie)'>
+          ALREADY LISTED!! woo
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
